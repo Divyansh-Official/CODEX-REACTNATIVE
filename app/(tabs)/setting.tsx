@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 
 const setting = () => {
   return (
-    <View>
+    <View className='flex-1 bg-dark-primary01'>
       <Text>setting</Text>
     </View>
   )

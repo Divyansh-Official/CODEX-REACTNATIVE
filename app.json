@@ -24,22 +24,11 @@
     "web": {
       "output": "static",
       "favicon": "./assets/images/codex.png",
-       "bundler": "metro"
+      "bundler": "metro"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/codex.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
-        }
-      ]
+      "react-native-bottom-tabs",
+      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true,

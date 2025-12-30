@@ -3,7 +3,7 @@ import React from 'react'
 
 const favourite = () => {
   return (
-    <View>
+    <View className='flex-1 bg-dark-primary01'>
       <Text>favourite</Text>
     </View>
   )
