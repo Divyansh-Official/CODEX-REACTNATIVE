@@ -12,13 +12,13 @@ module.exports = {
 
         light : {
 
-        primary: '#F0F3FA',
-        primary01: '#D5DEEF',
-        primary02: '#8AAE0',
+        primary: '#ffffff',
+        primary01: '#f3dbce',
+        primary02: '#ece5e3',
         secondary01: '#B1C9EF',
         secondary02: '#395886',
-        secondary03: '#638ECB'
-
+        secondary03: '#638ECB',
+        secondary04: '#4c2b21'
 
       },
       dark : {
@@ -26,7 +26,7 @@ module.exports = {
         primary: '#191919',
         primary01: '#262626',
         primary02: '#383838',
-        secondary01: '#',
+        secondary01: '#cecece',
         secondary02: '#'
 
       }

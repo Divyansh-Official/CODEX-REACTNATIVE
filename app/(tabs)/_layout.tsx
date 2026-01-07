@@ -20,12 +20,14 @@ const TabIcon = ({
   focused, 
   iconUnselected, 
   iconSelected,
-  lottie 
+  lottie,
+  isHomeTab = false
 }: { 
   focused: boolean; 
   iconUnselected: any; 
   iconSelected?: any;
   lottie?: any;
+  isHomeTab?: boolean;
 }) => {
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const opacityAnim = useRef(new Animated.Value(0.7)).current;
@@ -67,13 +69,13 @@ const TabIcon = ({
         ) : focused && iconSelected ? (
           <Image
             source={iconSelected}
-            style={styles.icon}
+            style={isHomeTab ? styles.homeIcon : styles.icon}
             resizeMode="contain"
           />
         ) : (
           <Image
             source={iconUnselected}
-            style={styles.icon}
+            style={isHomeTab ? styles.homeIcon : styles.icon}
             resizeMode="contain"
           />
         )}
@@ -98,7 +100,7 @@ const LiquidGlassTabBar = ({ state, descriptors, navigation }: any) => {
   return (
     <View style={styles.tabBarContainer}>
       <BlurView 
-        intensity={100} 
+        intensity={80} 
         tint="light" 
         style={styles.blurContainer}
       >
@@ -159,11 +161,11 @@ const LiquidGlassTabBar = ({ state, descriptors, navigation }: any) => {
 const _layout = () => {
   return (
     <Tabs
-      tabBar={(props) => <LiquidGlassTabBar {...props} />}
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+    initialRouteName="index"
+    tabBar={(props) => <LiquidGlassTabBar {...props} />}
+    screenOptions={{
+    headerShown: false, }}>
+
       <Tabs.Screen
         name="profile"
         options={{
@@ -201,6 +203,7 @@ const _layout = () => {
               focused={focused}
               iconUnselected={require("../../assets/images/codex_unselected.png")}
               iconSelected={require("../../assets/images/codex_selected.png")}
+              isHomeTab={true}
             />
           ),
         }}
@@ -267,8 +270,8 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 35,
     borderWidth: 0.5,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(243, 219, 206, 0.3)',
+    borderColor: 'rgba(243, 219, 206, 0.4)',
     overflow: "hidden",
   },
   liquidIndicator: {
@@ -284,12 +287,12 @@ const styles = StyleSheet.create({
     width: 67,
     height: 60,
     borderRadius: 30,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: "rgba(243, 219, 206, 0.5)",
     ...Platform.select({
       ios: {
-        shadowColor: "#fff",
+        shadowColor: "#f3dbce",
         shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.4,
         shadowRadius: 10,
       },
       android: {
@@ -326,7 +329,12 @@ const styles = StyleSheet.create({
   icon: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
-    tintColor: "#fff",
+    tintColor: "#4c2b21",
+  },
+  homeIcon: {
+    width: IMAGE_SIZE,
+    height: IMAGE_SIZE,
+    // No tintColor - keeps original colors
   },
   lottie: {
     width: IMAGE_SIZE + 10,
