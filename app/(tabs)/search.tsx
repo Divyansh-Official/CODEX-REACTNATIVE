@@ -4,7 +4,13 @@ import React from 'react'
 const search = () => {
   return (
     <View className='flex-1 bg-dark-primary01'>
-      <Text>search</Text>
+      
+      <View className='flex-col'>
+
+        
+
+      </View>
+
     </View>
   )
 }
